@@ -36,3 +36,4 @@
 /node_modules
 Gemfile
 Gemfile.lock
+config/database.yml
