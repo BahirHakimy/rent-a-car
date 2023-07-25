@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from './../images/logo.png';
 import { Link, NavLink } from 'react-router-dom';
 import {
   FaFacebook,
@@ -9,13 +8,16 @@ import {
   FaMedium,
 } from 'react-icons/fa';
 
-function Navbar(props) {
+function AuthNavbar(props) {
   const links = [
-    { to: '', label: 'Login' },
-    { to: 'signup', label: 'Sign Up' },
+    { to: '', label: 'Cars' },
+    { to: 'reserve', label: 'Reserve' },
+    { to: 'reservations', label: 'My Reservations' },
+    { to: 'add-car', label: 'Add Car' },
+    { to: 'delete-car', label: 'Delete Car' },
   ];
   return (
-    <div className="flex flex-col justify-start items-start pl-4 border-r h-screen min-w-48">
+    <div className="flex flex-col justify-start items-start pl-4 border-r h-screen">
       <Link to="/">
         <img src={Logo} alt="Logo" width="150px" height="150px" />
       </Link>
@@ -70,11 +72,11 @@ function Navbar(props) {
           <FaGithub />
         </a>
       </ul>
-      <p className="text-slate-700 text-sm font-semibold mx-auto pr-4 pb-6 whitespace-nowrap">
+      <p className="text-slate-700 text-sm font-semibold mx-auto pr-4 pb-6">
         &copy; 2023 Microverse
       </p>
     </div>
   );
 }
 
-export default Navbar;
+export default AuthNavbar;
