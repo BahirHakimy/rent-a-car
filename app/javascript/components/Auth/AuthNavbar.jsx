@@ -1,24 +1,45 @@
 import React from 'react';
-import Logo from './../images/logo.png';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
   FaFacebook,
   FaTwitter,
   FaGoogle,
   FaGithub,
   FaMedium,
+  FaUser,
+  FaPowerOff,
 } from 'react-icons/fa';
+import Logo from './../../images/logo.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../context/features/userSlice';
+import { addToast } from '../../context/features/toastSlice';
 
-function Navbar(props) {
+function AuthNavbar() {
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const links = [
-    { to: '', label: 'Login' },
-    { to: 'signup', label: 'Sign Up' },
+    { to: '', label: 'Cars' },
+    { to: 'reserve', label: 'Reserve' },
+    { to: 'reservations', label: 'My Reservations' },
+    { to: 'add-car', label: 'Add Car' },
+    { to: 'delete-car', label: 'Delete Car' },
   ];
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+    dispatch(addToast('Logged out!'));
+  };
   return (
-    <div className="flex flex-col justify-start items-start pl-4 border-r h-screen min-w-48">
+    <div className="flex flex-col justify-start items-start pl-4 border-r h-screen">
       <Link to="/">
         <img src={Logo} alt="Logo" width="150px" height="150px" />
       </Link>
+      <div className="text-sky-600 px-3 py-2 flex justify-between items-center text-xl w-full font-semibold">
+        {user.username}
+        <FaUser />
+      </div>
       <ul className="w-full">
         <li>
           {links.map((link) => (
@@ -29,7 +50,7 @@ function Navbar(props) {
                 `${
                   isActive
                     ? 'bg-lime-500 text-white'
-                    : 'text-slate-800 hover:bg-slate-100'
+                    : 'text-slate-800 hover:bg-slate-100 active:bg-slate-200'
                 } px-3 py-2 block text-xl w-full font-semibold`
               }
             >
@@ -38,6 +59,13 @@ function Navbar(props) {
           ))}
         </li>
       </ul>
+      <div
+        onClick={handleLogout}
+        className="rounded-tl-xl rounded-bl-xl text-slate-700 px-3 py-2 flex justify-between items-center text-xl w-full font-semibold hover:bg-slate-100 cursor-pointer active:bg-slate-200"
+      >
+        Logout
+        <FaPowerOff />
+      </div>
       <ul className="flex justify-center items-center w-full mt-auto mb-4 pr-4">
         <a
           href="https://www.twitter.com"
@@ -70,11 +98,11 @@ function Navbar(props) {
           <FaGithub />
         </a>
       </ul>
-      <p className="text-slate-700 text-sm font-semibold mx-auto pr-4 pb-6 whitespace-nowrap">
+      <p className="text-slate-700 text-sm font-semibold mx-auto pr-4 pb-6">
         &copy; 2023 Microverse
       </p>
     </div>
   );
 }
 
-export default Navbar;
+export default AuthNavbar;
