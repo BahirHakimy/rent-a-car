@@ -11,9 +11,10 @@ const initialState = {
 
 const login = createAsyncThunk(
   'user/login',
-  async ({ username, password }, { rejectWithValue }) => {
+  async ({ username, password, callback }, { rejectWithValue }) => {
     try {
       const response = await axios.post('/api/login', { username, password });
+      callback?.();
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data.error);

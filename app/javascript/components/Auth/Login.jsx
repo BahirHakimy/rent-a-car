@@ -11,8 +11,13 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { username, password } = event.target;
-    dispatch(login({ username: username.value, password: password.value }));
-    dispatch(addToast('Logged In successfully'));
+    dispatch(
+      login({
+        username: username.value,
+        password: password.value,
+        callback: () => dispatch(addToast('Logged In successfully')),
+      })
+    );
   };
   return (
     <div className="min-h-screen flex items-center justify-center w-full bg-slate-50">
