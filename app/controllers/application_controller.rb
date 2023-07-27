@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     rescue ActiveRecord::RecordNotFound => e
       render json: { errors: e.message }, status: :unauthorized
     rescue JWT::DecodeError => e
-      render json: { errors: e.message }, status: :unauthorized
+      render json: { errors: "Invalid token" }, status: :unauthorized
     end
   end
 end

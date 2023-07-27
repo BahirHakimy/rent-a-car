@@ -1,12 +1,12 @@
 import React from 'react';
-import { Route, Routes } from 'react-router';
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
-import Layout from './components/Layout';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ToastContainer from './components/shared/ToastContainer';
+import Layout from './components/Layout';
+import { Login, Register } from './components/Auth';
+import Home from './components/cars/Home';
+import { Details } from './components/cars';
 
-function Router(props) {
+function Router() {
   const { user } = useSelector((state) => state.user);
 
   return (
@@ -14,10 +14,8 @@ function Router(props) {
       <Route path="" element={<Layout />}>
         {user ? (
           <>
-            <Route
-              path=""
-              element={<h1 className="bg-blue-400">Hello Home</h1>}
-            />
+            <Route path="cars" element={<Home />} />
+            <Route path="cars/:car_id" element={<Details />} />
             <Route
               path="reserve"
               element={<h1 className="bg-blue-400">Reserve a car</h1>}
@@ -34,6 +32,7 @@ function Router(props) {
               path="delete-car"
               element={<h1 className="bg-blue-400">Delete Cars</h1>}
             />
+            <Route path="/" element={<Navigate to={'cars'} />} />
           </>
         ) : (
           <>
