@@ -1,9 +1,9 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Navbar from './Navbar';
-import AuthNavbar from './Auth/AuthNavbar';
 import { useSelector } from 'react-redux';
-import ToastContainer from './shared/ToastContainer';
+import Navbar from './Navbar';
+import { AuthNavbar } from './Auth';
+import { ToastContainer } from './shared';
 
 function Layout() {
   const { user } = useSelector((state) => state.user);

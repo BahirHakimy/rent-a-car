@@ -19,7 +19,7 @@ function AuthNavbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const links = [
-    { to: '', label: 'Cars' },
+    { to: 'cars', label: 'Cars' },
     { to: 'reserve', label: 'Reserve' },
     { to: 'reservations', label: 'My Reservations' },
     { to: 'add-car', label: 'Add Car' },
@@ -33,7 +33,7 @@ function AuthNavbar() {
   };
   return (
     <div className="flex flex-col justify-start items-start pl-4 border-r h-screen">
-      <Link to="/">
+      <Link to="/cars">
         <img src={Logo} alt="Logo" width="150px" height="150px" />
       </Link>
       <div className="text-sky-600 px-3 py-2 flex justify-between items-center text-xl w-full font-semibold">
