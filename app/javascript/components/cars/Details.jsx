@@ -19,17 +19,18 @@ function Details(props) {
         <BiLeftArrow />
       </Link>
 
-      <div className="flex justify-center items-center gap-x-4">
+      <div className="flex flex-wrap md:flex-nowrap justify-center items-center gap-x-4">
         <div
-          className={`flex md:w-3/4 w-1/2 justify-center items-center h-screen overflow-visible rounded-full max-w-fit`}
+          className={`flex justify-center items-center h-screen overflow-visible rounded-full max-w-fit`}
         >
           <img
             src={car.image_url}
-            className="max-w-full"
+            className="max-w-full h-auto"
+            width="100%"
             alt={`${car.model}-image`}
           />
         </div>
-        <div className="md:w-1/4 w-1/2 px-4">
+        <div className="px-4">
           <h1 className="text-3xl font-bold text-right my-3 whitespace-nowrap">
             {car.model}
           </h1>
@@ -56,7 +57,7 @@ function Details(props) {
           </ul>
           <Link
             to="/reserve"
-            className="bg-lime-500 ml-auto max-w-fit mt-20 px-4 py-2 text-white flex items-center rounded-full hover:bg-lime-400 active:bg-lime-600"
+            className="bg-lime-500 ml-auto max-w-fit mt-20 px-4 py-2 my-4 text-white flex items-center rounded-full hover:bg-lime-400 active:bg-lime-600"
           >
             Reserve <FaCheckCircle className="ml-4" />
           </Link>

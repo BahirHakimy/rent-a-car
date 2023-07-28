@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import { Login, Register } from './components/Auth';
 import Home from './components/cars/Home';
 import { Details } from './components/cars';
+import AddCar from './components/cars/AddCar';
 
 function Router() {
   const { user } = useSelector((state) => state.user);
@@ -18,19 +19,24 @@ function Router() {
             <Route path="cars/:car_id" element={<Details />} />
             <Route
               path="reserve"
-              element={<h1 className="bg-blue-400">Reserve a car</h1>}
+              element={
+                <h1 className="h-screen w-full bg-blue-400">Reserve a car</h1>
+              }
             />
             <Route
               path="reservations"
-              element={<h1 className="bg-blue-400">Your Reservations</h1>}
+              element={
+                <h1 className="h-screen w-full bg-blue-400">
+                  Your Reservations
+                </h1>
+              }
             />
-            <Route
-              path="add-car"
-              element={<h1 className="bg-blue-400">Add New Car</h1>}
-            />
+            <Route path="add-car" element={<AddCar />} />
             <Route
               path="delete-car"
-              element={<h1 className="bg-blue-400">Delete Cars</h1>}
+              element={
+                <h1 className="h-screen w-full bg-blue-400">Delete Cars</h1>
+              }
             />
             <Route path="/" element={<Navigate to={'cars'} />} />
           </>
