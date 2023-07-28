@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
 
   root 'root#index'
+  resources :cars
+  resources :reservations
 
   get '*path', to: 'root#index'
 end
