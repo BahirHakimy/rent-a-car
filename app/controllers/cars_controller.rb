@@ -1,41 +1,25 @@
 class CarsController < ApplicationController
-     # List all cars
+  protect_from_forgery with: :null_session
+  before_action :authorize_request
+  # List all cars
   def index
     @cars = Car.all
+    render json: @cars
   end
 
   # Show a specific car
   def show
     @car = Car.find(params[:id])
-  end
-
-  # Create a new car (form)
-  def new
-    @car = Car.new
+    render json: @car
   end
 
   # Save the new car to the database
   def create
     @car = Car.new(car_params)
     if @car.save
-      redirect_to @car, notice: 'Car was successfully created.'
+      render json: { "message": 'Car was successfully created.', car: @car }, status: :created
     else
-      render :new
-    end
-  end
-
-  # Edit a car (form)
-  def edit
-    @car = Car.find(params[:id])
-  end
-
-  # Update the car in the database
-  def update
-    @car = Car.find(params[:id])
-    if @car.update(car_params)
-      redirect_to @car, notice: 'Car was successfully updated.'
-    else
-      render :edit
+      render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -43,12 +27,12 @@ class CarsController < ApplicationController
   def destroy
     @car = Car.find(params[:id])
     @car.destroy
-    redirect_to cars_url, notice: 'Car was successfully destroyed.'
+    render json: { "message": 'Car was successfully destroyed.' }
   end
 
   private
 
   def car_params
-    params.require(:car).permit(:model, :color, :image_url, :price)
+    params.permit(:model, :color, :image_url, :description, :price)
   end
 end

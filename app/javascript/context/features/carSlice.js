@@ -2,68 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { axios } from '../../utils/api';
 
 const initialState = {
-  cars: [
-    {
-      id: 1,
-      model: 'Nissan ARIYA',
-      description:
-        'Nissan ARIYA is a daring glimpse of an automotive future others can only dream about.',
-      color: '#cdccdd',
-      image_url:
-        'https://www.nissanusa.com/content/dam/Nissan/us/vehicles/ariya/2023/overview/mini-exterior-360/XGJ/08-two-tone-sunrise-copper-pearl-black-diamond-metallic-nissan-ariya-front-left-view.png.ximg.c1h.360.png',
-      price: 449.99,
-    },
-    {
-      id: 2,
-      model: 'Nissan Rogue Sport',
-      description: 'Street-savvy, road-trip ready, always fun to drive',
-      color: '#be5e26',
-      image_url:
-        'https://www.nissanusa.com/content/dam/Nissan/us/vehicles/rogue_sport/2022/overview/mini-exterior-360/nbl/08.png.ximg.c1h.360.png',
-      price: 449.99,
-    },
-    {
-      id: 3,
-      model: 'Nissan ARIYA',
-      description:
-        'Nissan ARIYA is a daring glimpse of an automotive future others can only dream about.',
-      color: '#cdccdd',
-      image_url:
-        'https://www.nissanusa.com/content/dam/Nissan/us/vehicles/ariya/2023/overview/mini-exterior-360/XGJ/08-two-tone-sunrise-copper-pearl-black-diamond-metallic-nissan-ariya-front-left-view.png.ximg.c1h.360.png',
-      price: 449.99,
-    },
-    {
-      id: 4,
-      model: 'Nissan Rogue Sport',
-      description: 'Street-savvy, road-trip ready, always fun to drive',
-      color: '#be5e26',
-      image_url:
-        'https://www.nissanusa.com/content/dam/Nissan/us/vehicles/rogue_sport/2022/overview/mini-exterior-360/nbl/08.png.ximg.c1h.360.png',
-      price: 449.99,
-    },
-    {
-      id: 5,
-      model: 'Nissan ARIYA',
-      description:
-        'Nissan ARIYA is a daring glimpse of an automotive future others can only dream about.',
-      color: '#cdccdd',
-      image_url:
-        'https://www.nissanusa.com/content/dam/Nissan/us/vehicles/ariya/2023/overview/mini-exterior-360/XGJ/08-two-tone-sunrise-copper-pearl-black-diamond-metallic-nissan-ariya-front-left-view.png.ximg.c1h.360.png',
-      price: 449.99,
-    },
-    {
-      id: 6,
-      model: 'Nissan Rogue Sport',
-      description: 'Street-savvy, road-trip ready, always fun to drive',
-      color: '#be5e26',
-      image_url:
-        'https://www.nissanusa.com/content/dam/Nissan/us/vehicles/rogue_sport/2022/overview/mini-exterior-360/nbl/08.png.ximg.c1h.360.png',
-      price: 449.99,
-    },
-  ],
+  cars: [],
   selected: null,
   loading: false,
-  error: null,
+  errors: [],
 };
 
 const fetchCars = createAsyncThunk(
@@ -78,30 +20,58 @@ const fetchCars = createAsyncThunk(
   }
 );
 
+const createCar = createAsyncThunk(
+  'cars/create',
+  async (
+    { model, description, color, image_url, price },
+    { rejectWithValue }
+  ) => {
+    try {
+      const response = await axios.post('/api/cars', {
+        model,
+        description,
+        color,
+        image_url,
+        price,
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.errors);
+    }
+  }
+);
+
 const carSlice = createSlice({
   name: 'car',
   initialState,
-  reducers: {
-    select: (state, action) => {
-      state.selected = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCars.pending, (state) => {
       state.loading = true;
     });
+    builder.addCase(fetchCars.rejected, (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    });
     builder.addCase(fetchCars.fulfilled, (state, action) => {
       state.cars = action.payload;
       state.loading = false;
-      state.error = null;
+      state.errors = null;
     });
-    builder.addCase(fetchCars.rejected, (state, action) => {
+    builder.addCase(createCar.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(createCar.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.errors = action.payload;
+    });
+    builder.addCase(createCar.fulfilled, (state, action) => {
+      state.cars.push(action.payload?.car);
+      state.loading = false;
+      state.errors = null;
     });
   },
 });
 
 export default carSlice.reducer;
-export const { select } = carSlice.actions;
-export { fetchCars };
+export { fetchCars, createCar };

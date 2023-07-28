@@ -30,10 +30,9 @@ function Navbar(props) {
       </Link>
       <ul className="w-full">
         {links.map(({ to, label, Icon }) => (
-          <li>
+          <li key={label}>
             <NavLink
               to={to}
-              key={label}
               className={({ isActive }) =>
                 `${
                   isActive

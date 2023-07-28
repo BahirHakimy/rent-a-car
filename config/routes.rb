@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :users, param: :_username
     post '/login', to: 'authentication#login'
+    resources :cars, only: %i[create index]
+    # resources :reservations
   end
 
   root 'root#index'
-  resources :cars
-  resources :reservations
 
   get '*path', to: 'root#index'
 end

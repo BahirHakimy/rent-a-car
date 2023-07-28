@@ -57,11 +57,10 @@ function AuthNavbar() {
         <FaUser />
       </div>
       <ul className="w-full">
-        <li>
-          {links.map(({ to, label, Icon }) => (
+        {links.map(({ to, label, Icon }) => (
+          <li key={label}>
             <NavLink
               to={to}
-              key={label}
               className={({ isActive }) =>
                 `${
                   isActive
@@ -73,8 +72,8 @@ function AuthNavbar() {
               <span className="hidden md:block whitespace-nowrap">{label}</span>
               <Icon />
             </NavLink>
-          ))}
-        </li>
+          </li>
+        ))}
       </ul>
       <div
         onClick={handleLogout}

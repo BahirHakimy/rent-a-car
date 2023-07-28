@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 import Layout from './components/Layout';
 import { Login, Register } from './components/Auth';
 import Home from './components/cars/Home';
-import { Details } from './components/cars';
-import AddCar from './components/cars/AddCar';
+import { Details, AddCar } from './components/cars';
 
 function Router() {
   const { user } = useSelector((state) => state.user);

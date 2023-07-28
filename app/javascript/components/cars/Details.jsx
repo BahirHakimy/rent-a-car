@@ -1,11 +1,11 @@
 import React from 'react';
 import { BiLeftArrow } from 'react-icons/bi';
-import { FaCheck, FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
-function Details(props) {
+function Details() {
   const { car_id } = useParams();
   const { cars } = useSelector((state) => state.car);
   const car = cars.filter((car) => car.id === parseInt(car_id))[0];
@@ -44,15 +44,20 @@ function Details(props) {
             </li>
             <li className="flex justify-between min-w-[8rem] text-sm font-semibold px-2 py-1 even:bg-gray-300 odd:bg-gray-50 ">
               <span>Tax:</span>
-              <span>${(car.price * 0.1).toFixed(2)}</span>
+              <span>${(parseFloat(car.price) * 0.1).toFixed(2)}</span>
             </li>
             <li className="flex justify-between min-w-[8rem] text-sm font-semibold px-2 py-1 even:bg-gray-300 odd:bg-gray-50 ">
               <span>Car Rent: </span>
-              <span>${car.price}</span>
+              <span>${parseFloat(car.price)}</span>
             </li>
             <li className="flex justify-between min-w-[8rem] text-sm font-semibold px-2 py-1 even:bg-gray-300 odd:bg-gray-50 ">
               <span>You Will Pay:</span>
-              <span>${(car.price + car.price * 0.1).toFixed(2)}</span>
+              <span>
+                $
+                {(parseFloat(car.price) + parseFloat(car.price) * 0.1).toFixed(
+                  2
+                )}
+              </span>
             </li>
           </ul>
           <Link
