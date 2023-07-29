@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-    # List all reservations
+  # List all reservations
   def index
     @reservations = Reservation.all
   end

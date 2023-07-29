@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getUser } from './auth';
+import { clearSession, getUser } from './auth';
 
 const authFetch = axios.create({
   headers: {

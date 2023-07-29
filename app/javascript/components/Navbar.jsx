@@ -80,7 +80,7 @@ function Navbar(props) {
         </a>
       </ul>
       <p className="text-slate-700 text-sm font-semibold mx-auto pr-4 pb-6 whitespace-nowrap hidden md:block">
-        &copy; 2023 Microverse
+        &copy; 2023 @Microverse
       </p>
     </div>
   );

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../context/features/userSlice';
 import { TbFidgetSpinner } from 'react-icons/tb';
 import { addToast } from '../../context/features/toastSlice';
+import { CarAnimation } from '../animations';
 
 function Login() {
   const { loading, error } = useSelector((state) => state.user);
@@ -22,7 +23,7 @@ function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center w-full bg-slate-50">
       <div className="bg-white shadow-md rounded-md w-96 p-8">
-        <h2 className="text-2xl text-center text-lime-600 mb-6">Login</h2>
+        <CarAnimation height={200} width={200} />
         <form onSubmit={handleSubmit} method="post">
           <div className="mb-4">
             <label htmlFor="username" className="text-lime-600">

@@ -3,6 +3,7 @@ import { register } from '../../utils/auth';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { addToast } from '../../context/features/toastSlice';
+import { CarAnimation } from '../animations';
 
 function Register() {
   const [errors, setErrors] = React.useState({ username: '', password: '' });
@@ -36,7 +37,7 @@ function Register() {
   return (
     <div className="min-h-screen flex items-center justify-center w-full bg-slate-50">
       <div className="bg-white shadow-md rounded-md w-96 p-8">
-        <h2 className="text-2xl text-center text-lime-600 mb-6">Register</h2>
+        <CarAnimation height={200} width={200} />
         <form onSubmit={handleSubmit} method="post">
           <div className="mb-4">
             <label htmlFor="username" className="text-lime-600">
