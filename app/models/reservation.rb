@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-    # Attributes
+  # Attributes
   attr_accessor :date
 
   # Associations
