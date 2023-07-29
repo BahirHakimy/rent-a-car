@@ -54,7 +54,9 @@ function Router() {
           path="*"
           element={
             <h1 className="h-screen w-full flex flex-col justify-center items-center">
-              <NotFound loop={true} />
+              <div className="max-h-screen overflow-hidden flex justify-center items-center">
+                <NotFound loop={true} />
+              </div>
               <Link className="text-sky-500 underline pb-20" to={'/'}>
                 Go Back Home
               </Link>
