@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchCars } from '../../context/features/carSlice';
 import { TbFidgetSpinner } from 'react-icons/tb';
+import Loading from '../animations/CarAnimation';
 
 function Home(props) {
   const { cars, loading } = useSelector((state) => state.car);
@@ -23,6 +24,7 @@ function Home(props) {
       <button className="absolute right-0 top-1/2 bg-lime-500 text-white pr-8 py-4 pl-4 rounded-l-full">
         <BiRightArrow />
       </button>
+
       <div className="flex flex-col justify-center items-center mt-12">
         <h1 className="text-3xl font-bold text-slate-800">Availble Cars</h1>
         <p className="text-slate-400 text-sm font-bold">

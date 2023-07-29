@@ -1,10 +1,11 @@
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Layout from './components/Layout';
 import { Login, Register } from './components/Auth';
 import Home from './components/cars/Home';
 import { Details, AddCar } from './components/cars';
+import { NotFound, UnderDevelopment } from './components/animations';
 
 function Router() {
   const { user } = useSelector((state) => state.user);
@@ -19,14 +20,16 @@ function Router() {
             <Route
               path="reserve"
               element={
-                <h1 className="h-screen w-full bg-blue-400">Reserve a car</h1>
+                <h1 className="h-screen w-full flex justify-center items-center">
+                  <UnderDevelopment loop={true} />
+                </h1>
               }
             />
             <Route
               path="reservations"
               element={
-                <h1 className="h-screen w-full bg-blue-400">
-                  Your Reservations
+                <h1 className="h-screen w-full flex justify-center items-center">
+                  <UnderDevelopment loop={true} />
                 </h1>
               }
             />
@@ -34,7 +37,9 @@ function Router() {
             <Route
               path="delete-car"
               element={
-                <h1 className="h-screen w-full bg-blue-400">Delete Cars</h1>
+                <h1 className="h-screen w-full flex justify-center items-center">
+                  <UnderDevelopment loop={true} />
+                </h1>
               }
             />
             <Route path="/" element={<Navigate to={'cars'} />} />
@@ -45,7 +50,17 @@ function Router() {
             <Route path="signup" element={<Register />} />
           </>
         )}
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route
+          path="*"
+          element={
+            <h1 className="h-screen w-full flex flex-col justify-center items-center">
+              <NotFound loop={true} />
+              <Link className="text-sky-500 underline pb-20" to={'/'}>
+                Go Back Home
+              </Link>
+            </h1>
+          }
+        />
       </Route>
     </Routes>
   );

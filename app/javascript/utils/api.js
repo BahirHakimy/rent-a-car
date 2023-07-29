@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getUser } from './auth';
+import { clearSession, getUser } from './auth';
 
 const authFetch = axios.create({
   headers: {
@@ -8,5 +8,19 @@ const authFetch = axios.create({
     Accept: 'application/json',
   },
 });
+
+// authFetch.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (
+//       error.response.status === 401 &&
+//       error.response.data.errors === 'Invalid token'
+//     ) {
+//       clearSession();
+//       // window.location.replace('/');
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 export { authFetch as axios };
