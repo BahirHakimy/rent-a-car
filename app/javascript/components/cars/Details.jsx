@@ -3,12 +3,14 @@ import { BiLeftArrow } from 'react-icons/bi';
 import { FaCheckCircle } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 function Details() {
   const { car_id } = useParams();
   const { cars } = useSelector((state) => state.car);
   const car = cars.filter((car) => car.id === parseInt(car_id))[0];
+
+  if (!car) return <Navigate to={'/cars'} />;
 
   return (
     <div className="relative w-full h-screen flex flex-col justify-start items-center overflow-auto max-h-screen max-w-full">

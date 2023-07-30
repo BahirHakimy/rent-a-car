@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Layout from './components/Layout';
 import { Login, Register } from './components/Auth';
 import Home from './components/cars/Home';
-import { Details, AddCar } from './components/cars';
+import { Details, AddCar, DeleteCar } from './components/cars';
 import { NotFound, UnderDevelopment } from './components/animations';
 
 function Router() {
@@ -34,14 +34,7 @@ function Router() {
               }
             />
             <Route path="add-car" element={<AddCar />} />
-            <Route
-              path="delete-car"
-              element={
-                <h1 className="h-screen w-full flex justify-center items-center">
-                  <UnderDevelopment loop={true} />
-                </h1>
-              }
-            />
+            <Route path="delete-car" element={<DeleteCar />} />
             <Route path="/" element={<Navigate to={'cars'} />} />
           </>
         ) : (

@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :users, param: :_username
     post '/login', to: 'authentication#login'
-    resources :cars, only: %i[create index]
-    # resources :reservations
+    resources :cars, only: %i[create index destroy]
   end
 
   root 'root#index'

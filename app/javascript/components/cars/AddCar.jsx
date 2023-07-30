@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createCar } from '../../context/features/carSlice';
 import { TbFidgetSpinner } from 'react-icons/tb';
+import { addToast } from '../../context/features/toastSlice';
 
 function AddCar() {
   const { loading, errors } = useSelector((state) => state.car);
@@ -19,9 +20,12 @@ function AddCar() {
         color: color.value,
         image_url: image_url.value,
         price: price.value,
+        callback: () => {
+          dispatch(addToast('Car added successfully!'));
+          navigate('/cars');
+        },
       })
     );
-    navigate('/cars');
   };
 
   return (

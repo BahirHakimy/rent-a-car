@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchCars } from '../../context/features/carSlice';
 import { TbFidgetSpinner } from 'react-icons/tb';
-import Loading from '../animations/CarAnimation';
 
 function Home(props) {
   const { cars, loading } = useSelector((state) => state.car);
