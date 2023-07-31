@@ -12,7 +12,6 @@
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
-  - [Run tests](#run-tests)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -88,6 +87,8 @@ git clone https://github.com/BahirHakimy/rent-a-car.git
 In order to run this project you need to:
 
 - Install [Git](https://git-scm.com/)
+- Install [NodeJs](https://nodejs.org/en)
+- Install [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 - Install [Ruby](https://rubyinstaller.org/)
 - Install [Rails](https://rubyonrails.org/)
 
@@ -98,22 +99,22 @@ To install the dependencies run the following command
 ```bash
 bundle install
 npm install
+# Or
+yarn
 ```
 
 ### Usage
+
+Database setup
+
+```bash
+rails db:create db:migrate db:seed
+```
 
 To start the project execute this command
 
 ```bash
 ./bin/dev
-```
-
-### Run tests
-
-To run the tests execute this command
-
-```bash
-rspec spec/
 ```
 
 <p align="right"><a href="#readme-top">👆</a></p>
@@ -167,6 +168,8 @@ If you like this project leave a start for it.
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 I would like to thank Microverse for helping me in my journey to become a Fullstack developer 🌹
+
+The app is based on the design by [Murat Korkmaz](https://www.behance.net/muratk), You can check the original design [here](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign).
 
 <p align="right"><a href="#readme-top">👆</a></p>
 

@@ -6,17 +6,15 @@ import { Provider } from 'react-redux';
 import { store } from './context/store';
 import Router from './Router';
 
-function App() {
-  return (
-    <React.StrictMode>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
-      </Provider>
-    </React.StrictMode>
-  );
-}
+const App = () => (
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+);
 
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);
