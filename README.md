@@ -19,6 +19,15 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
+### Kanban Board
+
+#### We are 2 partners in this project
+
+- You can find the Kanban board [here](https://github.com/users/BahirHakimy/projects/4)
+- Here is the board's initial state screenshot
+
+  - ![Screenshot 2023-07-20 213435](https://github.com/BahirHakimy/rent-a-car/assets/73453971/c8fc0490-fd21-40b2-afa6-9b7dda3d135d)
+
 <!-- PROJECT DESCRIPTION -->
 
 # 📖 Rent A Car <a name="about-project"></a>
@@ -57,7 +66,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- `N/A`
+- [Demo](https://rent-a-car-lmhu.onrender.com/cars)
 
 <!-- Features -->
 
