@@ -16,7 +16,6 @@ import {
   AiFillDelete,
 } from 'react-icons/ai';
 import { BsFillJournalBookmarkFill } from 'react-icons/bs';
-import Logo from './../../images/logo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../context/features/userSlice';
 import { addToast } from '../../context/features/toastSlice';
@@ -44,10 +43,20 @@ function AuthNavbar() {
         to="/cars"
         className="fixed md:hidden top-2 left-2 border shadow-md rounded-full"
       >
-        <img src={Logo} alt="Logo" width="45px" height="45px" />
+        <img
+          src="https://raw.githubusercontent.com/BahirHakimy/rent-a-car/dev/app/javascript/images/logo.png"
+          alt="Logo"
+          width="45px"
+          height="45px"
+        />
       </Link>
       <Link to="/cars" className="hidden md:block">
-        <img src={Logo} alt="Logo" width="150px" height="150px" />
+        <img
+          src="https://raw.githubusercontent.com/BahirHakimy/rent-a-car/dev/app/javascript/images/logo.png"
+          alt="Logo"
+          width="150px"
+          height="150px"
+        />
       </Link>
       <div
         title={user.username}
