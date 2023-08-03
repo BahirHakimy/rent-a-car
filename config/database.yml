@@ -83,6 +83,4 @@ test:
 #
 production:
   <<: *default
-  database: rent_a_car_production
-  username: rent_a_car
-  password: <%= ENV["RENT_A_CAR_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
